@@ -34,7 +34,7 @@ class ArticleMaster(models.Model):
 
 
 class ColorMaster(models.Model):
-    yarn_article = models.ForeignKey(ArticleMaster, on_delete=models.PROTECT)
+    article = models.ForeignKey(ArticleMaster, on_delete=models.PROTECT)
     name = models.CharField(max_length=20)
     short_name = models.CharField(max_length=20)
     remarks = models.CharField(max_length=64, blank=True)

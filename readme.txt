@@ -4,4 +4,6 @@
  	=> python manage.py runserver
 4. To apply in-built migrations:
 	=> python manage.py migrate
-5. Your code goes in the `transaction` directory
+5. To populate masters, run:
+	=> python manage.py populate_masters
+6. Your code goes in the `transaction` directory
