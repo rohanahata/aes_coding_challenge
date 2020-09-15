@@ -113,7 +113,7 @@ For creation of APIs - Can use Django Rest Framework.
 3.  All response should be in a format:
     
 
-`1 2 3 4 5` `{ "data": {}, "message": "", "status": <SOME HTTP STATUS CODE> }`
+`{ "data": {}, "message": "", "status": <SOME HTTP STATUS CODE> }`
 
 Here,
 
