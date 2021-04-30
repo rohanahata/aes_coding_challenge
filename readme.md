@@ -16,7 +16,7 @@
 
 **Objective:**
 
-To create APIs for an ERP transaction.
+To create APIs for a transaction.
 
 **Requirements:**
 
@@ -27,10 +27,8 @@ For creation of APIs - Can use Django Rest Framework.
 **PART A: Models**
 
 1.  **Transaction**
-    
-    1.  A primary document
-        
-    2.  Fields
+       
+    1.  Fields
         
         1.  Unique Id - auto_generated primary field
             
