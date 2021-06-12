@@ -39,4 +39,38 @@ class ColorMaster(models.Model):
     short_name = models.CharField(max_length=20)
     remarks = models.CharField(max_length=64, blank=True)
 
-# Create your models here.
+
+class Transaction(models.Model):
+    TRANSACTION_CHOICES = (
+        ("pending", "pending"),
+        ("completed", "completed"),
+        ("close", "close"),
+    )
+    company = models.ForeignKey(CompanyLedgerMaster, on_delete=models.PROTECT)
+    branch = models.ForeignKey(BranchMaster, on_delete=models.PROTECT)
+    department = models.ForeignKey(DepartmentMaster, on_delete=models.PROTECT)
+    transaction_number = models.CharField(max_length=50, unique=True)
+    transaction_status = models.CharField(max_length=200, choices=TRANSACTION_CHOICES)
+    remarks = models.CharField(max_length=200)
+
+
+class TransactionLineItem(models.Model):
+    UNIT_CHOICES = (("kg", "kg"), ("metre", "metre"))
+    item = models.ForeignKey(Transaction, on_delete=models.PROTECT)
+    article = models.ForeignKey(ArticleMaster, on_delete=models.PROTECT)
+    colour = models.ForeignKey(ColorMaster, on_delete=models.PROTECT)
+    date = models.DateTimeField()
+    quantity = models.DecimalField(max_digits=5, decimal_places=4)
+    rate = models.IntegerField()
+    unit = models.CharField(max_length=200, choices=UNIT_CHOICES)
+
+
+class InventoryItem(models.Model):
+    UNIT_CHOICES = (("kg", "kg"), ("metre", "metre"))
+    inventory_item = models.ForeignKey(TransactionLineItem, on_delete=models.PROTECT)
+    article = models.ForeignKey(ArticleMaster, on_delete=models.PROTECT)
+    colour = models.ForeignKey(ColorMaster, on_delete=models.PROTECT)
+    company = models.ForeignKey(CompanyLedgerMaster, on_delete=models.PROTECT)
+    gross_quantity = models.DecimalField(max_digits=5, decimal_places=4)
+    net_quantity = models.DecimalField(max_digits=5, decimal_places=4)
+    unit = models.CharField(max_length=200, choices=UNIT_CHOICES)
