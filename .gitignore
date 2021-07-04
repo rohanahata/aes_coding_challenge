@@ -7,3 +7,5 @@ staticfiles/
 *.log
 .vscode/
 mediafiles/
+venv/
+db.sqlite3

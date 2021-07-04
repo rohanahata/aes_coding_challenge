@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Application definition
+# Built-In Applications
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,7 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+#Internal Applications
+INSTALLED_APPS += [
     'transaction.apps.TransactionConfig',
+]
+
+#External Applications
+INSTALLED_APPS += [
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
